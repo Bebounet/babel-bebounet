@@ -53,7 +53,7 @@ def controller_file(year):
             controller_input()
 
 
-def validate_year(data_year):
+def validate_year(data_year, isverbose=True):
     """ Vérifier si la date est au format <YY> ou <YYYY>
         Si <YY> verifier si supérieur a 19"""
     dt = datetime.datetime.now()
@@ -73,10 +73,13 @@ def validate_year(data_year):
         if data_year >= twoyear:
             # data_year = str(data_year)
             data_year += 1900
-            printseparator()
-            print("Vous étes né en ", data_year)
-            display_line_year(data_year)
-            printseparator()
+            if isverbose:
+                printseparator()
+                print("Vous étes né en ", data_year)
+                display_line_year(data_year)
+                printseparator()
+            else:
+                return data_year
 
         else:
             data_year += 2000
