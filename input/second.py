@@ -62,7 +62,7 @@ F_ERROR = "error"
 
 
 def validate_juststring(input):
-    """ si la string input contient just des caractères A-Z"""
+    """ si la string input contient juste des caractères A-Z"""
     # si vide
     # enlever les espaces
     # regarde si AZ ou az
