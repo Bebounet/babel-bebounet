@@ -17,7 +17,8 @@ def controller_input():
 
 
 def controller_file(year):
-    """Verifier l'input de l'utilisateur, taille et characteres"""
+    """Verifier l'input de l'utilisateur, taille et caracteres 
+       Si caractéres autres que [0-9] alors on redemande a l'utilisateur de taper la date"""
     lon_date = len(year)
     if lon_date > 4:
         print("Format de date invalide ! \n <YYYY> ou <YY>")
@@ -93,6 +94,7 @@ def validate_year(data_year):
 
 
 def display_line_year(data_year_from_arg):
+    """Fonction qui calcule le nombre de jours entre la date de l'utilisateur et la date du jour"""
     date_now = datetime.date.today()
     date = datetime.date(int(data_year_from_arg), 10, 15)
     # date_now = int(str(date_now))
