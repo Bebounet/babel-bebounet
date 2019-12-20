@@ -46,6 +46,7 @@ def get_urls(arglist, is_verbose=True):
 
 
 def displayurl(html, is_verbose):
+    """ Fonction d'affichage du status_code et des headers """
     print(f"--> Il y a {len(html.text)} octets dans {html.url}")
     if is_verbose:
         printseparator()
@@ -67,6 +68,7 @@ F_TITLE = "title"
 
 
 def writetodict(html, is_verbose=False):
+    """ création d'un dictionnaire et ecriture de données dans un fichier 'checkurl.json' """
     title = search_title(html.text)
     dict = {
         F_URL: html.url,
@@ -96,6 +98,7 @@ def writetodict(html, is_verbose=False):
 
 
 def search_title_by_bs4(text):
+    """ Recherche d'un titre avec beautifulsoup """
     soup = BeautifulSoup(text, "lxml")
 
     # ATTENTION CODE TEST FIN DE JOURNEE
