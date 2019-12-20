@@ -2,6 +2,12 @@
 
 ## Changelog 
 
+### 20/12/19
+
+##### Django
+- installation de django
+
+
 ### 19/12/19
 
 ##### beautifulSoup

@@ -72,13 +72,13 @@ def displayurl(html, is_verbose):
 
 
 F_URL = "url"
-F_STATUS = "Status_code"
-F_HTML = "Content"
-F_TITLE = "Title"
-F_IMAGE = "Image"
-F_DESC = "Description"
-F_COUNTER = "Nombre d'objet"
-F_DATASET = "Dataset"
+F_STATUS = "status_code"
+F_HTML = "content"
+F_TITLE = "title"
+F_IMAGE = "image"
+F_DESC = "description"
+F_COUNTER = "nbobjet"
+F_DATASET = "dataset"
 
 
 def writetodict(html, is_verbose=False):
