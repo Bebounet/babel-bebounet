@@ -2,11 +2,18 @@
 
 ## Changelog 
 
+### 07/01/20
+
 ### 20/12/19
 
 ##### Django
 - installation de django
-
+- create superuser admin -> authentication, crud, model(bdd)
+- create user
+- settings.py (config django)
+- page home affiche le contenu json checkurl
+    - .py def home() -> url
+- template home.html
 
 ### 19/12/19
 

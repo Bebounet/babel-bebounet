@@ -1,0 +1,32 @@
+Author
+	firstname			varchar	
+	lastname			varchar
+	name (fullname)		varchar
+	century_birth		int
+	date_birth			date
+	place_birth			varchar
+	---------------------------
+	date-died 			date
+	place_died			varchar
+	content 			varchar
+	---------------------------
+	image_url			varchar
+	image_file			varchar
+	
+Publication
+	name				varchar
+	type				Book, Music, Film
+	genre				varchar
+	#author				varchar
+	reference			varchar
+	#dewew_number		int
+	date_publicaton		date
+	nb_book_pages		int
+	nb_album_tracks		int
+	#label_editor		varchar
+	content				varchar
+	image				varchar
+	
+Dewey
+	name				varchar
+	number				int
