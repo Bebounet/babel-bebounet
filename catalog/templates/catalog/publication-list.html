@@ -1,0 +1,12 @@
+<div class="publication">
+    <div class="list-group">
+
+    {% for publication_record in publication_object_list %}
+        <a href="" class="list-group-item list-group-item-action">
+            Nom: {{ publication_record.name}} <br>
+            Référence: {{ publication_record.reference}}<br>  
+            Nom de l'auteur: {{ publication_record.author}}<br>    
+            Numéro dewey: {{ publication_record.dewey_number}}<br>
+            Type de publication: {{ publication_record.type_publication}}</a>
+    {% endfor %}
+</div>

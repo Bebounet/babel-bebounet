@@ -1,0 +1,11 @@
+amazon: 
+
+Guillaume Apollinaire, Poèmes à Lou. Il y a
+Albert Camus, L'étranger
+Victor Hugo, Les misérables
+Jean de La Fontaine, La Fontaine : Fables
+Guy de Maupassant, Pierre et Jean
+
+media : 
+Guy de Maupassant, Pierre et Jean :
+https://www.youtube.com/watch?v=ckXXzqjwMW4

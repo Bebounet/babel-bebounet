@@ -1,0 +1,45 @@
+.newsroom {
+    /* width: 400px;*/
+    border: 1px solid black;
+  }
+
+.newsroom li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+  }
+
+.newsroom li:hover {
+    background-color: dodgerblue;
+    cursor: pointer;
+  }
+
+.newsroom h3 {
+    font-size: 1.1rem;
+  }
+
+.newsroom a {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+footer {
+    background-color: rgba(124, 179, 169, 0.479);
+    margin-top: 1rem;
+
+}
+
+.publication {
+    border: 1px solid black;
+    background-color: rgba(124, 179, 169, 0.479);
+}
+.publication p:hover{
+    border: 1px solid black;
+    color: rgb(122, 74, 233);
+    background-color: rgba(124, 179, 169, 0.479);
+}
+
+.list-group a:hover{
+    background-color: rgba(133, 182, 247, 0.445);
+}
