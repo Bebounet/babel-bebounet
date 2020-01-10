@@ -20,7 +20,6 @@ def get_century(year):
 
 
 def xls_reader():
-    """ Permet de lire un fichier excel .xls"""
     liste_dewey = [
         (),
         (),

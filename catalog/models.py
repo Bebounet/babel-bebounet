@@ -83,7 +83,7 @@ class Dewey(models.Model):
         ("#000000", "black"),
     ]
 
-    name = models.CharField(max_length=90, verbose_name=_("Nom"))
+    name = models.CharField(max_length=120, verbose_name=_("Nom"))
     number = models.CharField(max_length=12, verbose_name=_("Numéro"))
     bg_color = models.CharField(max_length=10, null=True, blank=True, editable=False)
     text_color = models.CharField(
@@ -114,10 +114,10 @@ class Dewey(models.Model):
             try:
                 i = int(self.number[:1])
                 return format_html(
-                    '<div style="background-color: {}; color: {}; min-width: 50px; min-heigth: 100px;">{}</div>',
+                    '<span style="background-color: {}; color: {}; min-width: 50px;">{}</span>',
                     self.BG_COLOR_CHOICES[i][0],  # bg color
                     self.BG_COLOR_CHOICES[i][1],  # text color
-                    self.name,
+                    self.number,
                 )
             except:
                 return "Wrong Format"
@@ -144,7 +144,7 @@ class Publication(models.Model):
         ("_", "Autre"),
     ]
 
-    name = models.CharField(max_length=30, verbose_name=_("Nom"))
+    name = models.CharField(max_length=120, verbose_name=_("Nom"))
     type_publication = models.CharField(
         max_length=1,
         choices=TYPE_PUBLICATION_CHOICES,
