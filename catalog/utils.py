@@ -1,29 +1,13 @@
-def test_get_century():
-    year_to_test = [1705, 19, 1700, 2011, 1200, 403, 0]
-    for y in year_to_test:
-        century = get_century(y)
-        print(f"année {y} siècle {century}")
+""" 
+    UTILS.PY
+    Catalog shared functions
+"""
 
-    print("---" * 30)
-    year_to_test_with_result = [
-        (1701, 18),
-        (19, 1),
-        (1700, 17),
-        (2011, 21),
-        (1200, 12),
-        (403, 5),
-        (0, 1),
-    ]
-    for testy in year_to_test_with_result:
-        century = get_century(testy[0])
-        if century == testy[1]:
-            print(f"année {testy} siècle {century} : PASSED")
-        else:
-            print(f"année {testy} siècle {century} expexted {testy[1]}: FAILED")
-            raise Exception(f"TEST FAILED with {testy[0]}")
+import xlrd
 
 
 def get_century(year):
+    """ Get century from int year and return int century """
     if year > 100:
         century = year % 100
         if century == 0:
@@ -35,4 +19,34 @@ def get_century(year):
     return century_birth
 
 
-# test_get_century()
+def xls_reader():
+    """ Permet de lire un fichier excel .xls"""
+    liste_dewey = [
+        (),
+        (),
+    ]
+    path = "scrap/La_Dewey_simplifiee.xls"
+    # Réouverture du classeur
+    classeur = xlrd.open_workbook(path)
+
+    # Récupération du nom de toutes les feuilles sous forme de liste
+    nom_des_feuilles = classeur.sheet_names()
+
+    # Récupération de la première feuille
+    feuille = classeur.sheet_by_name(nom_des_feuilles[0])
+    for i in range(0, 109):
+        for j in range(0, 1):
+            if feuille.cell_value(i, 1):
+                number = feuille.cell_value(i, 1)
+                name = feuille.cell_value(i, 2)
+                liste_dewey[0] = number
+                liste_dewey[1] = name
+                # print(f"{liste_dewey[0]} -------- {liste_dewey[1]}")
+                # liste_dewey[0], liste_dewey[1]
+                print(liste_dewey)
+                liste_dewey
+                # print(f"Number: {number} name : {name}")
+    return liste_dewey
+
+
+# xls_reader()

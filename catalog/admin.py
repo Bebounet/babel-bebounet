@@ -1,16 +1,17 @@
 from django.contrib import admin
 from .models import Author, Dewey, Publication
+from django.utils.translation import gettext as _
 
 
 class PublicationAdmin(admin.ModelAdmin):
     """Choix des champs a afficher"""
 
     list_display = (
-        "dewey_number",
-        "type_publication",
-        "reference",
         "name",
+        "reference",
         "author",
+        "type_publication",
+        "dewey_number",
         "label_editor",
         "nb_tracks_pages",
         "date_publication",
@@ -29,17 +30,22 @@ class PublicationAdmin(admin.ModelAdmin):
     )
 
     fieldsets = (
-        ("Reference", {"fields": fields_reference}),
+        (_("Référence"), {"fields": fields_reference}),
         (
-            "Publication",
+            _("Publication"),
             {"classes": ("wide", "extrapretty"), "fields": fields_publication},
         ),
-        ("Details", {"classes": ("collapse",), "fields": fields_details}),
+        (_("Détails"), {"classes": ("collapse",), "fields": fields_details}),
     )
 
     radio_fields = {"type_publication": admin.HORIZONTAL}
     readonly_fields = ("reference",)
-    # autocomplete_fields = ("dewey_name", "")
+    search_fields = ["name", "reference", "dewey_number__number"]
+    autocomplete_fields = ["author", "dewey_number"]
+    list_filter = (
+        "dewey_number__number",
+        "author__last_name",
+    )
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -48,6 +54,7 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = (
         "last_name",
         "first_name",
+        "name",
         "date_birth",
         "century_birth",
     )
@@ -56,13 +63,14 @@ class AuthorAdmin(admin.ModelAdmin):
     list_death = [("date_died", "place_died",)]
     list_details = [("content", "image_url", "image_file",)]
     fieldsets = (
-        ("Identité", {"fields": list_identity}),
-        ("Naissance", {"fields": list_birth}),
-        ("Décès", {"classes": ("collapse",), "fields": list_death}),
-        ("Details", {"classes": ("collapse",), "fields": list_details}),
+        (_("Identité"), {"fields": list_identity}),
+        (_("Naissance"), {"fields": list_birth}),
+        (_("Contemporain ?"), {"classes": ("collapse",), "fields": list_death}),
+        (_("Details"), {"classes": ("collapse",), "fields": list_details}),
     )
-
     readonly_fields = ("century_birth",)
+    search_fields = ["first_name", "last_name", "name"]
+    list_filter = ("century_birth",)
 
 
 class DeweyAdmin(admin.ModelAdmin):
@@ -71,8 +79,13 @@ class DeweyAdmin(admin.ModelAdmin):
     list_display = (
         "number",
         "name",
-        "color",
+        # "color",
+        "colored_number",
+        # "set_dewey_color_publication",
     )
+    search_fields = ["number", "name"]
+    list_filter = ("number",)
+    # actions = ["add_xls"]
 
 
 admin.site.register(Author, AuthorAdmin)

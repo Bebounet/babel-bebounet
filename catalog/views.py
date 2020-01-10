@@ -22,3 +22,26 @@ def index(request):
         "checkurl": dict_checkurl,
     }
     return render(request, "index.html", context=dict_context)
+
+
+def about(request):
+    """ The home page for babel"""
+
+    basedir = settings.BASE_DIR
+    filename = basedir + "/scrap/checkurl.json"
+    try:
+        with open(filename, "r") as f:
+            dict_checkurl = json.load(f)
+    except Exception as e:
+        dict_checkurl = {"error", str(e)}
+
+    dict_context = {
+        "jumbotron_title": "Bienvenue sur notre page babel",
+        "jumbotron_p": "Vous aurez toutes les informations plus tard ...",
+        "checkurl": dict_checkurl,
+    }
+    return render(request, "index.html", context=dict_context)
+
+
+def publication(request):
+    pass

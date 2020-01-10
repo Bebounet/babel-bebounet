@@ -144,6 +144,8 @@ def search_title_by_bs4(text):
 
 
 def search_meta(text):
+    """ Erreur d'encodage : https://outils-javascript.aliasdmc.fr/encodage-caracteres-accentues/encode-caractere-00E9-html-css-js-autre.html"""
+    text = text.replace("Ã©", "é")
     soup = BeautifulSoup(text, "lxml")
     # Recherche des données
     # Verification qu'il y a bien un meta title sinon on recupere title sans passer par la fonction meta -> property
@@ -206,12 +208,10 @@ if __name__ == "__main__":
 
     listedesurls = [
         # "http://localhost:8080/formext/avions/avions",
-        "https://openclassrooms.com/",
+        "https://elpais.com/",
         "https://www.dealabs.com",
         "https://www.ouest-france.fr/",
-        "chrome-extension://aejoelaoggembcahagimdiliamlcdmfm/index.html#requests",
-        "https://www.youtube.com/",
-        "https://twitter.com/home",
+        "https://www.python.org/",
     ]
     get_urls(listedesurls)
 

@@ -5,6 +5,14 @@ __pycache__/
 *.code-workspace
 *.vscode
 
+# Dossier Static et media
+files_static/
+files_media/
+
+# fichier excel et images
+*.jpg
+*.xls
+
 # C extensions
 *.so
 

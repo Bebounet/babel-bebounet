@@ -4,13 +4,34 @@
 
 ## Semaine 2: Django et Babel
 
+### 10/01/20
+
+###### Application
+- Recuperer les données via la techno de scrapping html à partir d'un url
+- creation d'un composant html pour afficher les données liste de scrap_url
+- settings django : 
+    - FILES_MEDIA: transfert des images des utilisateurs (file upload), peut être en accès privé.
+    - FILES_STATIC: ressources static de l'application, accès public.(CSS, js, Front, Jpg, video)
+- Integration dans des listes auteurs, publication des filtres, recherche et une autocompletion dans les formulaire de l'interface admin du backoffice de la bibliothecaire.
+- elements html -> interface utilisateur 
+- traduction des libelles des champs anglais -> francais
+    - sur les formmulaires du backoffice
+    - listes auteur, publication, dewey
+- fonction couleur dans le modele dewey pour associer au code de la classification la couleur du fond de texte selon la norme dewey
+
 ### 09/01/20
 
 ###### Application
 - ajout de fonctionnalitées : 
     - Couleurs qui s'adaptent selon le classement Dewey
-    - Calcul du siècle de naissance en fonction de la date de naissance d'un auteur 
-    - 
+    - Calcul du siècle de naissance en fonction de la date de naissance d'un auteur et integration dans l'application
+- saisie formulaire
+- reflexion sur les choix a prendre sur les fonctionnalitées a intégrer 
+    - parfois les devs spécifiques s'evitent par une formation/accompagnement de l'utilisateur final
+    - retour de l'experience métier, permet de corriger ou d'orienter le dev
+    - regrouper en temps (1,2,3) les devs
+- admin formulaire definition du modèle
+- regrouper en sections les zones de saisie pour etre en accord avec le metier et l'objet de la table author et publication 
 
 ### 08/01/20
 
@@ -65,7 +86,9 @@ lien vers la doc Django <https://docs.djangoproject.com/fr/3.0/>
 - schéma bdd 
 - definition ORM
 - création des classes pour créer la bdd dans ``models.py``
-Exemple d'une création de table 
+- Exemple d'une création de table : 
+
+code
 
     class Author(models.Model):
     """Création de la table Author"""
