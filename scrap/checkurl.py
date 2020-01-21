@@ -83,13 +83,7 @@ F_DATASET = "dataset"
 
 def writetodict(html, is_verbose=False):
     """ création d'un dictionnaire et ecriture de données dans un fichier 'checkurl.json' """
-    # title = search_title(html.text)
-    # dict_hmtl = {
-    # F_URL: html.url,
-    # F_STATUS: html.status_code,
-    # F_HTML: html.text[:6000],
-    # F_TITLE: title,
-    # }
+    
     dict_meta = search_meta(html.text)
     dict_hmtl = {F_STATUS: html.status_code}
     dict_hmtl.update(dict_meta)

@@ -1,5 +1,8 @@
+{% load i18n %}
+<h2> {% trans "Filtrer par Dewey" %}</h2>
 <div class="list-group">
   {% for dewey_record in dewey_object_list %}
-  <a href="{% url 'publication' %}?dewey_number={{dewey_record.number}}" class="list-group-item list-group-item-action">{{ dewey_record.colored_number}} || {{ dewey_record.name}} </a>
+  <a href="{% url 'publication-dewey' dewey_record.number %}" class="list-group-item list-group-item-action {% if dewey_active and dewey_active == dewey_record %}active{% endif %}">
+  {{ dewey_record.colored_number}} || {{ dewey_record.name|truncatechars:38}}</a>
 {% endfor %}
 </div>

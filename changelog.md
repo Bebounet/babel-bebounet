@@ -2,6 +2,39 @@
 
 ## Changelog 
 
+## Semaine 3: Django et Babel
+
+### 21/01/20
+
+##### A faire 
+
+- urls de la page détail
+    - /catalog/"<dewey>_<aut>_<id>"/
+    - /catalog/<refpub>/
+- template page détails
+    - publication display
+    - auteur display
+
+##### Etapes de conception web de Babel
+
+- cahier des charges/clients/besoins/objectifs/delais/prix
+- choix technologiques
+
+###### 1
+- structure des données, des tables(makemigrations et migrate)
+- superadmin, compte admin
+- composants/fonctions métiers
+    - liste Dewey, norme de travail
+    - publications
+    - auteurs
+###### 2
+- backoffice pour l'admin en lien au données
+###### 3 
+- site public avec son interface
+- affichage dernieres oeuvres insérées 
+- fiche oeuvre
+- recherche via Dewey
+
 ## Semaine 2: Django et Babel
 
 ### 10/01/20
@@ -18,6 +51,9 @@
     - sur les formmulaires du backoffice
     - listes auteur, publication, dewey
 - fonction couleur dans le modele dewey pour associer au code de la classification la couleur du fond de texte selon la norme dewey
+- query: liste de données
+- urls: aiguillage d'urls
+
 
 ### 09/01/20
 
