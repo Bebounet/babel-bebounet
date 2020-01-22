@@ -20,7 +20,7 @@ def publication(request):
 
         publication_list = Publication.objects.all()
     except:
-        record = record_list = publication_list = None
+        record_list = publication_list = None
 
     context_local = {
         "title": "Liste des publications du catalogue",
@@ -29,7 +29,6 @@ def publication(request):
     context_page = {
         "global": CONTEXT_GLOBAL,
         "local": context_local,
-        "dewey_object": record,
         "dewey_object_list": record_list,
         "publication_object_list": publication_list,
     }
