@@ -85,15 +85,23 @@ WSGI_APPLICATION = "babel.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    # si j'utilise sqlite3
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    # }
-    "default": dj_database_url.config(),
-}
-DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+USE_LOCAL_DB = strtobool(os.getenv("USE_LOCAL_DB", "0"))
+
+if USE_LOCAL_DB:
+    print("UTILISE LE MODE LOCAL DB : SQLITE")
+    DATABASES = {
+        # Charge sqlite3 (le default du developpement)
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+else:
+    # Charge postgresql (le default en production)
+    DATABASES = {
+        "default": dj_database_url.config(),
+    }
+    DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
