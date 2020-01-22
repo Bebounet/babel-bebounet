@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "catalog",
+    "import_export",
 ]
 
 MIDDLEWARE = [
@@ -141,6 +142,6 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "files_media")
 print(f"STATIC = {MEDIA_ROOT}")
 
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+if not USE_LOCAL_DB:
+    # Activate Django-Heroku.
+    django_heroku.settings(locals())
