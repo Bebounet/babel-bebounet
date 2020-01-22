@@ -19,6 +19,10 @@ def clean(data_year):
 
 
 def get_century(self):
+    """ 
+    Prend une date de naissance en argument\n
+    Retourne un siècle de naissance
+    """
     date = int(self.date_birth.year)
     if date > 100:
         century = date % 100
