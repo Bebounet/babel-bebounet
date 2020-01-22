@@ -4,6 +4,15 @@
 
 ## Semaine 3: Django et Babel
 
+### 22/01/20
+
+###### A Developper
+
+- Test mobile
+- Page détail Publication
+- Page auteur
+- Formulaire d'acquisition d'une publication par l'usager
+
 ### 21/01/20
 
 ##### A faire 
