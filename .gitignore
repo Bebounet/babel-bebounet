@@ -8,6 +8,7 @@ __pycache__/
 # Dossier Static et media
 files_static/
 files_media/
+staticfiles/
 
 # fichier excel et images
 *.jpg

@@ -15,11 +15,12 @@ CONTEXT_GLOBAL = {
 
 
 def publication(request):
+    try:
+        record_list = Dewey.objects.all()
 
-    record = Dewey.objects.get(number="100")
-    record_list = Dewey.objects.all()
-
-    publication_list = Publication.objects.all()
+        publication_list = Publication.objects.all()
+    except:
+        record = record_list = publication_list = None
 
     context_local = {
         "title": "Liste des publications du catalogue",
