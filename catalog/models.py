@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.html import format_html
-from .utils import get_century, xls_reader
+from .utils import get_century
 from django.utils.translation import gettext as _
+from django.urls import reverse
 
 
 # Create your models here.
@@ -31,7 +32,9 @@ class Author(models.Model):
         max_length=50, null=True, blank=True, verbose_name=_("Lieu de décès")
     )
     content = models.TextField(null=True, blank=True, verbose_name=_("Contenu"))
-    image_url = models.URLField(null=True, blank=True, verbose_name=_("Url de l'image"))
+    image_url = models.URLField(
+        null=True, blank=True, verbose_name=_("Url de l'image"), max_length=300
+    )
     image_file = models.ImageField(
         null=True, blank=True, verbose_name=_("Fichier de l'image")
     )
@@ -171,7 +174,9 @@ class Publication(models.Model):
         max_length=30, null=True, blank=True, verbose_name=_("Label/Editeur")
     )
     content = models.TextField(null=True, blank=True, verbose_name=_("Contenu"))
-    image_url = models.URLField(null=True, blank=True, verbose_name=_("Url de l'image"))
+    image_url = models.URLField(
+        null=True, blank=True, verbose_name=_("Url de l'image"), max_length=300
+    )
     image_file = models.ImageField(
         null=True, blank=True, verbose_name=_("Fichier de l'image")
     )
@@ -191,3 +196,10 @@ class Publication(models.Model):
             self.reference = f"{self.dewey_number.number}.{self.author.last_name[:3].upper()}.{self.pk}"
         else:
             self.reference = ""
+
+    def get_absolute_url(self):
+        # Fait la meme chose sauf que on précise l'url
+        # return f"/catalog/{self.id}/"
+
+        # Fait la meme chose sauf que on précise le name de l'url
+        return reverse("publication-detail-pk", args=[str(self.id)])

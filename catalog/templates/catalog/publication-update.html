@@ -1,0 +1,43 @@
+{% extends 'catalog/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block jumbotron %}
+{% endblock  %}
+{% block content %}
+{% block contentactions %}
+<nav class="navbar sticky-top dewey{{object.dewey_number.number}}">
+    <div class="container">
+        <div>
+        <a href="{{ object.get_absolute_url }}" class="btn btn-danger">< Retour</a>
+        {% if user.is_staff %}
+        <a href"#" class="btn btn-success" id="save-maj">Enregistrer les modifications</a>
+        {% endif %}
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+
+<div class="container">
+    <h1>{{ object }}</h1>
+    <div class="form-group">
+        <form method="POST" id="form-maj">
+            {% csrf_token %}
+            {{ form| crispy}}
+
+        </form>
+    </div>
+</div>
+{% block userscript %}
+{{ block.super }}
+<script>
+    window.onload = function () {
+        document.getElementById("save-maj").addEventListener("click", function () {
+            document.getElementById("form-maj").submit();
+            return false;
+        });
+    }
+</script
+  {% endblock %}
+{% endblock %}

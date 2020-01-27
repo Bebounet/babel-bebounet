@@ -1,6 +1,9 @@
 <div class="jumbotron jumbotron-fluid {% if jumbotron_class %}{{jumbotron_class}}{% endif %}">
   <div class="container">
     <h1 class="display-4">{{ local.title }}</h1>
-    <p class="lead">{{ local.description }}</p>
+    <p class="lead">{{ local.description|safe }}</p>
+    {% if local.home_isactive %}
+    <a class="btn btn-primary btn-lg" href="{% url 'publication' %}" role="button">Accès au catalogue</a>
+    {% endif %}
   </div>
 </div>

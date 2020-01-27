@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="{% url 'home' %}">Babel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,25 +7,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Accueil<span class="sr-only">(current)</span></a>
+            <li class="nav-item {{local.home_isactive}}">
+                <a class="nav-link" href="{% url 'home' %}">Accueil</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{local.catalog_isactive}}">
                 <a class="nav-link" href="{% url 'publication' %}">Catalogue des ouvrages</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{local.newsroom_isactive}}">
                 <a class="nav-link" href="{% url 'newsroom' %}">Salle de presse</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{local.about_isactive}}">
                 <a class="nav-link" href="{% url 'about' %}">A propos</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
         {% if user.is_authenticated %}
-             <a href="/admin/" class="btn btn-outline-success my-2 my-sm-0" type="submit">Admin</a>
-             <a href="/admin/logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">Bye</a>
+             <a href="/admin/" class="btn btn-secondary my-2 my-sm-0" type="submit">Admin</a>
+             <a href="/admin/logout" class="btn btn-danger my-2 my-sm-0" type="submit">Bye</a>
         {% else %}
-             <a href="/admin/" class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</a>
+             <a href="/admin/" class="btn btn-secondary  my-2 my-sm-0" type="submit">Se connecter</a>
         {% endif %}
       </form>
     </div>

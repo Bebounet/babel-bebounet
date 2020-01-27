@@ -36,7 +36,7 @@ DEBUG = strtobool(os.getenv("DJANGO_DEBUG", "0"))
 if DEBUG:
     print("MODE DEBUG !!!")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.2"]
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog",
     "import_export",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,5 @@ print(f"STATIC = {MEDIA_ROOT}")
 if not USE_LOCAL_DB:
     # Activate Django-Heroku.
     django_heroku.settings(locals())
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

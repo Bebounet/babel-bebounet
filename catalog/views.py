@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render
 from django.conf import settings
 from .models import Dewey, Publication
+import markdown
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ CONTEXT_GLOBAL = {
 
 def publication(request):
     try:
-        record_list = Dewey.objects.all()
+        record_list = Dewey.objects.filter(number__icontains="00")
 
         publication_list = Publication.objects.all()
     except:
@@ -25,6 +26,7 @@ def publication(request):
     context_local = {
         "title": "Liste des publications du catalogue",
         "description": "Vous trouverez tous les ouvrages et leurs classifications",
+        get_active(request): "active",
     }
     context_page = {
         "global": CONTEXT_GLOBAL,
@@ -38,7 +40,8 @@ def publication(request):
 def home(request):
     context_local = {
         "title": "Page d'accueil de Babel",
-        "description": "Bienvenue sur cette page en cours de réalisation",
+        "description": "Cliquez ici pour acceder au catalogue",
+        get_active(request): "active",
     }
     context_page = {"global": CONTEXT_GLOBAL, "local": context_local}
     return render(request, "catalog/index.html", context=context_page)
@@ -48,6 +51,8 @@ def about(request):
     context_local = {
         "title": "A propos de Babel",
         "description": "Vous trouverez tout les détails de spécification ici.",
+        "description_md": read_md(request),
+        get_active(request): "active",
     }
     context_page = {"global": CONTEXT_GLOBAL, "local": context_local}
     return render(request, "catalog/about.html", context=context_page)
@@ -63,9 +68,11 @@ def newsroom(request):
             dict_checkurl = json.load(f)
     except Exception as e:
         dict_checkurl = {"error", str(e)}
+
     context_local = {
         "title": "Salle de presse",
         "description": "Decouvrez des sites !",
+        get_active(request): "active",
     }
 
     context_page = {
@@ -76,3 +83,29 @@ def newsroom(request):
     #  Pour ajouter un dictionnaire a un dictionnaire, j'utilise
     #  bigdict = { **onedict, **anotherdict }
     return render(request, "catalog/newsroom.html", context=context_page)
+
+
+def get_active(request):
+    """
+    Recupère le slug principal défini dans l'url. Pour rendre la navbar active.
+    """
+    path = (request.path).split("/")
+    path = str(path[1])
+    if path == "":
+        active = "home"
+    else:
+        active = path
+    active += "_isactive"
+    return active
+
+
+def read_md(request):
+    basedir = settings.BASE_DIR
+    # filename = basedir + "/catalog/static/catalog/markdown/home.md"
+    filename = basedir + "/changelog.md"
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            file_content = markdown.markdown(f.read(), output_format="html5")
+    except Exception as e:
+        file_content = {"error", str(e)}
+    return file_content

@@ -24,42 +24,37 @@
     display: block;
   }
 
-footer {
-    background-color: #e9ecef;
-    margin-top: 1rem;
-
-}
-
-.publication {
+  
+  .publication {
     border: 1px solid black;
     background-color: rgba(124, 179, 169, 0.479);
-}
-.publication p:hover{
+  }
+  .publication p:hover{
     border: 1px solid black;
     color: rgb(122, 74, 233);
     background-color: rgba(124, 179, 169, 0.479);
-}
-
-.list-group a:hover{
+  }
+  
+  .list-group a:hover{
     text-decoration: none;
     background-color: rgba(133, 182, 247, 0.445);
-}
-
-/* Dewey color */
-
-.dewey000 {
-  background-color: #000000; 
-  color:#FFFFFF;
-}
-
-.dewey100 {
-  background-color: #8B4513;
+  }
+  
+  /* Dewey color */
+  
+  .dewey000 {
+    background-color: #000000; 
+    color:#FFFFFF;
+  }
+  
+  .dewey100 {
+    background-color: #8B4513;
   color: #FFFFFF;
 }
 
 .dewey200{
-background-color: #FF0000; 
-color: #FFFFFF;
+  background-color: #FF0000; 
+  color: #FFFFFF;
 }
 .dewey300 { 
   background-color : rgb(226, 115, 25);
@@ -93,4 +88,17 @@ color: #FFFFFF;
 .dewey900{
   background-color: #FFFFFF; 
   color: #000000;
+}
+.jumbotron{
+  margin-bottom: 0px;
+}
+
+footer {
+  padding: 1rem;
+  background-color: lightblue;
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
 }

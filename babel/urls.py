@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from catalog.views import home, newsroom, about, publication
-from catalog.viewscat import PublicationByDewey, PublicationDetail
+from catalog.viewscat import PublicationByDewey, PublicationDetail, PublicationUpdate
 
 
 urlpatterns = [
@@ -39,6 +39,11 @@ urlpatterns = [
         name="publication-detail",
     ),
     path("catalog/<pk>/", PublicationDetail.as_view(), name="publication-detail-pk",),
+    path(
+        "catalog/<pk>/update/",
+        PublicationUpdate.as_view(),
+        name="publication-update-pk",
+    ),
     path("", home, name="home"),
 ]
 if settings.DEBUG:

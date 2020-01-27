@@ -6,6 +6,14 @@
 
 ### 22/01/20
 
+###### Deploiement
+
+- Cloud hebergement serveur 
+    - heroku
+    - settings.py propre a heroku
+    - package gunicorn, dj-url, django-heroku
+    - python manage.py collectstatic
+    
 ###### A Developper
 
 - Test mobile
