@@ -6,27 +6,29 @@
 {% endblock  %}
 {% block content %}
 {% block contentactions %}
-<nav class="navbar sticky-top dewey{{object.dewey_number.number}}">
-    <div class="container">
-        <div>
-        <a href="{{ object.get_absolute_url }}" class="btn btn-danger">< Retour</a>
-        {% if user.is_staff %}
-        <a href"#" class="btn btn-success" id="save-maj">Enregistrer les modifications</a>
-        {% endif %}
+<div class="minh">
+    <nav class="navbar sticky-top dewey{{object.dewey_number.number}}">
+        <div class="container">
+            <div>
+                <a href="{{ object.get_absolute_url }}" class="btn btn-danger btn-sm">
+                    < Retour</a> {% if user.is_staff %} <a href"#" class="btn btn-success btn-sm" id="save-maj">Enregistrer les modifications
+                </a>
+                {% endif %}
+            </div>
         </div>
-    </div>
-</nav>
-{% endblock %}
+    </nav>
+    {% endblock %}
 
 
-<div class="container">
-    <h1>{{ object }}</h1>
-    <div class="form-group">
-        <form method="POST" id="form-maj">
-            {% csrf_token %}
-            {{ form| crispy}}
+    <div class="container">
+        <h1>{{ object }}</h1>
+        <div class="form-group">
+            <form method="POST" id="form-maj">
+                {% csrf_token %}
+                {{ form|crispy}}
 
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 {% block userscript %}
@@ -38,6 +40,6 @@
             return false;
         });
     }
-</script
-  {% endblock %}
+</script>
+{% endblock %}
 {% endblock %}
