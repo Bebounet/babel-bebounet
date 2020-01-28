@@ -44,6 +44,7 @@ class Author(models.Model):
         verbose_name = _("Auteur")
 
     def __str__(self):
+        # Affichage du nom et prénom
         if self.first_name:
             return f"{self.last_name} {self.first_name}"
         else:
@@ -81,17 +82,17 @@ class Dewey(models.Model):
         ("#FFFFFF", "#000000", "white"),  # White 900
     ]
 
-    TEXT_COLOR_CHOICES = [
-        ("#FFFFFF", "white"),
-        ("#000000", "black"),
-    ]
+    # TEXT_COLOR_CHOICES = [
+    #     ("#FFFFFF", "white"),
+    #     ("#000000", "black"),
+    # ]
 
     name = models.CharField(max_length=120, verbose_name=_("Nom"))
     number = models.CharField(max_length=12, verbose_name=_("Numéro"))
     bg_color = models.CharField(max_length=10, null=True, blank=True, editable=False)
-    text_color = models.CharField(
-        choices=TEXT_COLOR_CHOICES, max_length=7, null=True, blank=True, editable=False
-    )
+    # text_color = models.CharField(
+    #     choices=TEXT_COLOR_CHOICES, max_length=7, null=True, blank=True, editable=False
+    # )
 
     class Meta:
         ordering = ["number"]
