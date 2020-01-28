@@ -12,7 +12,9 @@
       <th scope="col">Publication</th>
       <th scope="col">Date de publication</th>
       <th scope="col">Type</th>
+      {% if user.is_staff %}
       <th scope="col">edit</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -21,7 +23,9 @@
       <td><a href="{{ publication_record.get_absolute_url }}">{{ publication_record.name }}</a><br>{{ publication_record.author }}, {{ publication_record.author.century_birth }}, {{ publication_record.label_editor }}</td>
       <td>{{ publication_record.date_publication }}</td>
       <td>{{ publication_record.type_publication }}</td>
+      {% if user.is_staff %}
       <td><a href="{% url 'publication-update-pk' publication_record.pk %}">edit</a></td>
+      {% endif %}
     </tr>
   {% endfor %}
     </tbody>
